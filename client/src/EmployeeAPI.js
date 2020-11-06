@@ -1,5 +1,3 @@
-import { application, json } from "express";
-
 export default{
    getEmployees:()=>{
       return fetch(`/employee`)
