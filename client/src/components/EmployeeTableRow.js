@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmployeeTable = (props)=>{
+const EmployeeTableRow = (props)=>{
    const {firstName,lastName,job,salary,_id} =props.employee;
    return(
       <tr>
