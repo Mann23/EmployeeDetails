@@ -10,22 +10,22 @@ const Form = (props)=>{
                      placeholder="Enter first name"
                      labelName="First Name: "
                      handleChange={props.handleChange}
-                     value={props.employee.firstName}/>        
+                     value={props.isEditForm?props.employee.firstName : null}/>        
             <Input name="lastName"
                      placeholder="Enter last name"
                      labelName="last Name: "
                      handleChange={props.handleChange}
-                     value={props.employee.lastName}/>   
+                     value={props.isEditForm?props.employee.firstName : null}/>   
             <Input name="job"
                      placeholder="Enter job"
                      labelName="Job: "
                      handleChange={props.handleChange}
-                     value={props.employee.job}/>   
+                     value={props.isEditForm?props.employee.firstName : null}/>   
             <Input name="salary"
                      placeholder="Enter salary"
                      labelName="Salary: "
                      handleChange={props.handleChange}
-                     value={props.employee.salary}/>   
+                     value={props.isEditForm?props.employee.firstName : null}/>   
          </div>
          <button type="submit" className="btn btn-primary">Submit</button>
       </form>

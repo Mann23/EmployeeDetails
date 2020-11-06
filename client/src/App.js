@@ -89,13 +89,13 @@ class App extends React.Component{
       e.preventDefault();
       const postData = await EmployeeAPI.createEmployee(this.state.employee);
       const message = postData.message;
-      if(message.msgError){
-         this.setState({message});
-      }
-      else{
+     // if(message.msgError){
+     //    this.setState({message});
+     // }
+     // else{
          const data=await EmployeeAPI.getEmployees();
          this.setState({message,employees:data.response})
-      }
+    //  }
       this.resetForm();
    }
 

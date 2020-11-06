@@ -6,7 +6,6 @@ const app=express();
 app.use(bodyParser.json());
 
 //routes
-
 const employee = require('./routes/employee.js');
 app.use('/employee',employee);
 
