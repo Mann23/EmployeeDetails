@@ -14,8 +14,8 @@ const EmployeeTable = (props)=>{
             </tr>
          </thead>
          <tbody>
-            {props.employees.mpa(employee =>{
-               return <EmployeeTableRow key={employee._id} employee={employee}  deleteHandler={props.deleteHandler} shoeEditForm={props.shoeEditForm} /> 
+            {props.employees.map(employee =>{
+               return <EmployeeTableRow key={employee._id} employee={employee}  deleteHandler={props.deleteHandler} showEditForm={props.showEditForm} /> 
             })}
          </tbody>
       </table>

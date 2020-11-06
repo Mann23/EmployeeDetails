@@ -59,26 +59,26 @@ class App extends React.Component{
 
    async deleteHandler(id){
       const deleteData = await EmployeeAPI.deleteEmployee(id);
-      const message = deleteData.message;
-      if(message.msgError){
-         this.setState({message});
+      //const message = deleteData.message;
+      if(deleteData.msgError){
+         this.setState({message:deleteData});
       }
       else{
          const data=await EmployeeAPI.getEmployees();
-         this.setState({message,employees:data.response})
+         this.setState({message:deleteData,employees:data.response})
       }
    }
 
    async updateHandler(e){
       e.preventDefault();
       const updateData = await EmployeeAPI.updateEmployee(this.state.employee);
-      const message = updateData.message;
-      if(message.msgError){
-         this.setState({message});
+      //const message = updateData.message;
+      if(updateData.msgError){
+         this.setState({message:updateData});
       }
       else{
          const data=await EmployeeAPI.getEmployees();
-         this.setState({message,employees:data.response})
+         this.setState({message:updateData,employees:data.response})
       }
 
       this.setState({isEditForm:false});
@@ -88,14 +88,14 @@ class App extends React.Component{
    async addHandler(e){
       e.preventDefault();
       const postData = await EmployeeAPI.createEmployee(this.state.employee);
-      const message = postData.message;
-     // if(message.msgError){
-     //    this.setState({message});
-     // }
-     // else{
+      //const message = postData.message;
+      if(postData.msgError){
+         this.setState({message:postData});
+      }
+     else{
          const data=await EmployeeAPI.getEmployees();
-         this.setState({message,employees:data.response})
-    //  }
+         this.setState({message:postData,employees:data.response})
+     }
       this.resetForm();
    }
 
