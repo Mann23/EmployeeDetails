@@ -29,7 +29,7 @@ class App extends React.Component{
    }
 
    componentDidMount(){
-      EmployeeAPI.getEmployees.then(data=>{this.setState({employees:data.response})});
+      EmployeeAPI.getEmployees().then(data=>{this.setState({employees:data.response})});
    }
 
    resetForm(){
