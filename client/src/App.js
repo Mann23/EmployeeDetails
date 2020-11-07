@@ -17,7 +17,7 @@ class App extends React.Component{
             salary:"",
             job:""
          },
-         message:""
+         message:{}
       };
 
       //bindings are all the functions we need to pass to child component
@@ -119,7 +119,7 @@ class App extends React.Component{
    }
 
    renderMessage(){
-      if(this.state.message ==="")
+      if(this.state.message === null)
       return null;
 
       return(<Message message={this.state.message} />);

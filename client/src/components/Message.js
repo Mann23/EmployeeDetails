@@ -3,8 +3,8 @@ import React from 'react';
 const renderMessageClassName = (props)=>{
    let className="alert text-center "; //here it is different
    if(props.message.msgError){
-     className+="alert-danger";
-   }
+    className+="alert-danger";
+  }
    else
    className+="alert-success";
 
