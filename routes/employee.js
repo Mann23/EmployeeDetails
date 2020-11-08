@@ -1,71 +1,75 @@
-const express = require('express');
-const employeeRouter = express.Router();
+const express=require('express');
 const Employee = require('../model/Employee');
+
+const EmployeeRouter = express.Router();
 
 //CRUD
 
-//read
-employeeRouter.get('/',(req,res)=>{
-    Employee.find({},(err,response)=>{
-        if(err)
-            res.status(500).json({message:{
-                msgBody : "Unable to get employees",
-                msgError : true
-            }});
-        else{
-            res.status(200).json({response});
-        }
-            
-    });
+EmployeeRouter.get('/',(req,res)=>{
+   Employee.find({},(err,response)=>{   //{} in find means find all
+      if(err)
+      {
+         res.status(500).json({
+            msgBody:"Unable to get employee",
+            msgError: true
+         })
+      }
+      else
+      res.status(200).json({response});
+   });
 });
 
-//create
-employeeRouter.post('/',(req,res)=>{
-    const employee = new Employee(req.body);
-    employee.save((err,document)=>{
-        if(err)
-            res.status(500).json({message:{
-                msgBody : "Unable to add employee",
-                msgError : true
-            }});
-        else
-            res.status(200).json({message:{
-                msgBody: "Successfully Added Employee",
-                msgError : false
-            }});
-    });
+
+EmployeeRouter.post('/',(req,res)=>{
+   const employee = new Employee(req.body);
+   employee.save((err,document)=>{
+      if(err)
+      {
+         res.status(500).json({
+            msgBody:"Unable to add employee",
+            msgError: true
+         })
+      }
+      else
+      res.status(200).json({
+         msgBody:"Success in adding employee",
+         msgError: false
+      });
+   });
 });
 
-// delete
-employeeRouter.delete('/:id',(req,res)=>{
-    Employee.findByIdAndDelete(req.params.id,err=>{
-        if(err)
-            res.status(500).json({message:{
-                msgBody : "Unable to Delete Employee",
-                msgError : true
-            }});  
-        else
-            res.status(200).json({message:{
-                msgBody: "Successfully Deleted Employee",
-                msgError : false
-            }});     
-    });
+EmployeeRouter.delete('/:id',(req,res)=>{
+   Employee.findByIdAndDelete(req,params.id,err=>{
+      if(err)
+      {
+         res.status(500).json({
+            msgBody:"Unable to delete employee",
+            msgError: true
+         })
+      }
+      else
+      res.status(200).json({
+         msgBody:"Success in deleting employee",
+         msgError: false
+      });
+   })
 });
 
-//update 
-employeeRouter.put('/:id',(req,res)=>{
-    Employee.findOneAndUpdate({_id : req.params.id},req.body,{runValidators: true},(err,response)=>{
-        if(err)
-            res.status(500).json({message:{
-                msgBody : "Unable to Update Employee",
-                msgError : true
-            }});
-        else
-        res.status(200).json({message:{
-            msgBody: "Successfully Updated Employee",
-            msgError : false
-        }});   
-    });
+EmployeeRouter.put('/:id',(req,res)=>{
+   Employee.findOneAndUpdate({_id:req.params.id},req.body,{runValidators:true},(err,response)=>{
+      if(err)
+      {
+         res.status(500).json({
+            msgBody:"Unable to update employee",
+            msgError: true
+         })
+      }
+      else
+      res.status(200).json({
+         msgBody:"Success in updating employee",
+         msgError: false
+      });
+   });
 });
 
-module.exports = employeeRouter;
+module.exports=EmployeeRouter;
